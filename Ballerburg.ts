@@ -37,6 +37,15 @@ function randomHeightMountain():number {
    return Math.floor(Math.random() * 500);
 }
 
+function drawMountain() {
+  ctx.beginPath();
+  ctx.moveTo(50, 0);
+  ctx.lineTo(150, 150);
+  ctx.lineTo(250, 0);
+  ctx.lineTo(50, 0);
+  ctx.fillStyle = "green";
+}
+
 function randomHeightCanon():number {
     return Math.floor(Math.random() * 200);
 
@@ -83,4 +92,4 @@ function animate(): void {
 
   }
 
-//Canvas
+
