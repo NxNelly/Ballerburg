@@ -5,6 +5,10 @@ canvas.height = innerHeight;
 canvas.width = 600;
 canvas.
 
+interface Mountain{
+    height: number;
+
+}
 
 interface Canon {
     color: string;
@@ -24,11 +28,12 @@ interface Ball {
 
 function randomHeightMountain(){
 
-    Math.floor(Math.random() * 500);
+   return Math.floor(Math.random() * 500);
 }
 
 function randomHeightCanon(){
-    Math.floor(Math.random() * 200);
+    return Math.floor(Math.random() * 200);
+
 }
 
 function addVectors(v1: Vector, v2: Vector): Vector {
@@ -42,7 +47,7 @@ function updateBall(ball: Ball): void {
     ball.position = addVectors(ball.position, ball.velocity);
   }
 
-function checkBallBounds() {
+function checkBallCollisionS() {
 
 }
 
@@ -68,5 +73,8 @@ function animate(): void {
     requestAnimationFrame(animate); // Recursively call the animate function for the next frame
   }
 
+  function drawMountain(){
+    
+  }
 
 //Canvas
