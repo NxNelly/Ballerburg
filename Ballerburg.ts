@@ -23,3 +23,6 @@ function randomHeightMountain(){
 function randomHeightCanon(){
     Math.floor(Math.random() * 200);
 }
+
+
+//Canvas
