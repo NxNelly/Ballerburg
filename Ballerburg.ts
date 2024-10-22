@@ -1,4 +1,4 @@
-const canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[];
+const canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0];
 const ctx: CanvasRenderingContext2D = canvas.getContext("2d")!;
 
 canvas.height = innerHeight;
@@ -12,14 +12,15 @@ interface Mountain{
 }
 
 interface Vector {
-  verctor: 
+  x: number,
+  y: number,
 }
 
 interface Canon {
     color: string;
     yPos: number;
     power : number;
-    direction : vector
+    direction : Vector
 
 }
 
@@ -31,12 +32,12 @@ interface Ball {
     active : boolean;
 }
 
-function randomHeightMountain(){
+function randomHeightMountain():number {
 
    return Math.floor(Math.random() * 500);
 }
 
-function randomHeightCanon(){
+function randomHeightCanon():number {
     return Math.floor(Math.random() * 200);
 
 }
@@ -52,7 +53,7 @@ function updateBall(ball: Ball): void {
     ball.position = addVectors(ball.position, ball.velocity);
   }
 
-function checkBallCollision() {
+function checkBallCollision():void {
 
 }
 
@@ -64,7 +65,7 @@ function drawBall(ctx: CanvasRenderingContext2D, ball: Ball): void {
     ctx.closePath();
   }
 
-function drawCanon(){
+function drawCanon():void{
 
 }
 
@@ -78,7 +79,7 @@ function animate(): void {
     requestAnimationFrame(animate); // Recursively call the animate function for the next frame
   }
 
-  function drawMountain(){
+  function drawMountain():void{
 
   }
 
