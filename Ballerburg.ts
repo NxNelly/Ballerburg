@@ -47,7 +47,7 @@ function updateBall(ball: Ball): void {
     ball.position = addVectors(ball.position, ball.velocity);
   }
 
-function checkBallCollisionS() {
+function checkBallCollision() {
 
 }
 
@@ -66,15 +66,15 @@ function drawCanon(){
 function animate(): void {
     ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
   
-    updateBall(ball); // Update ball position
-    checkBallBounds(ball, canvas.width, canvas.height); // Check and handle collisions with canvas borders
-    drawBall(ctx, ball); // Draw the ball on canvas
+    updateBall(ball);S
+    checkBallCollision(ball, canvas.width, canvas.height); 
+    drawBall(ctx, ball); 
   
     requestAnimationFrame(animate); // Recursively call the animate function for the next frame
   }
 
   function drawMountain(){
-    
+
   }
 
 //Canvas
