@@ -1,5 +1,5 @@
-let canvas: HTMLCanvasElement = document.querySelector("canvas") ;
-let ctx: CanvasRenderingContext2D = canvas.getContext("2d");
+const canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[];
+const ctx: CanvasRenderingContext2D = canvas.getContext("2d")!;
 
 canvas.height = innerHeight;
 
@@ -9,6 +9,10 @@ interface Mountain{
     xPosL: number;//linke untere Ecke der Dreiecks
     xPosR: number;//rechte''
 
+}
+
+interface Vector {
+  verctor: 
 }
 
 interface Canon {
