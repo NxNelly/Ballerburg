@@ -1,12 +1,13 @@
 let canvas: HTMLCanvasElement = document.querySelector("canvas") ;
-let ctx: CanvasRenderingContext2D = canvas.getContext("2d")!;
+let ctx: CanvasRenderingContext2D = canvas.getContext("2d");
 
 canvas.height = innerHeight;
-canvas.width = 600;
-canvas.
 
 interface Mountain{
     height: number;
+    yPos: number;
+    xPosL: number;//linke untere Ecke der Dreiecks
+    xPosR: number;//rechte''
 
 }
 
@@ -66,8 +67,8 @@ function drawCanon(){
 function animate(): void {
     ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
   
-    updateBall(ball);S
-    checkBallCollision(ball, canvas.width, canvas.height); 
+    updateBall(ball);
+    //checkBallCollision(ball, canvas.width, canvas.height); 
     drawBall(ctx, ball); 
   
     requestAnimationFrame(animate); // Recursively call the animate function for the next frame
