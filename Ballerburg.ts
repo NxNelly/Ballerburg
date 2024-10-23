@@ -13,6 +13,7 @@ interface Vector {
 
 interface Canon {
   color: string;
+  xPos: number;
   yPos: number;
   power: number;
   direction: Vector
@@ -27,16 +28,17 @@ interface Ball {
   active: boolean;
 }
 
+let canon1 : Canon ={ color: "blue", xPos: 0, yPos: 50, power: 50, direction: {x: 1, y: 1} }
 
 const canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0];
 const ctx: CanvasRenderingContext2D = canvas.getContext("2d")!;
-
-canvas.height = innerHeight;
 
 document.addEventListener("keydown", hndKeydown);
 
 let sliderManipulate: HTMLInputElement = document.querySelector("input#AngleKeyboard")!;
 
+
+drawCanon();
 
 function hndKeydown(_event: KeyboardEvent): void {
   console.log(_event);
@@ -106,7 +108,14 @@ function drawPlatforms(): void {
 drawPlatforms();
 
 function drawCanon(): void {
-
+  //ctx.arc(canon1.xPos,canon1.yPos,50 , 0, 2 * Math.PI);
+  console.log("draw canon");
+  ctx.beginPath();
+  ctx.arc(50 ,50 ,50 , 0, 2 * Math.PI);
+  ctx.rect(50, 50, 70, 50);
+  ctx.fillStyle = "blue";
+  ctx.fill();
+  
 }
 
 function randomHeightCanon(): number {
