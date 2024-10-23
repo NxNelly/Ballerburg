@@ -28,7 +28,9 @@ interface Ball {
   active: boolean;
 }
 
-let canon1 : Canon ={ color: "blue", xPos: 0, yPos: 50, power: 50, direction: {x: 1, y: 1} }
+let canon1 : Canon ={ color: "blue", xPos: 50, yPos: 100, power: 50, direction: {x: 1, y: 1} }
+let canon2 : Canon ={ color: "red", xPos: 300, yPos: 100, power: 50, direction: {x: -1, y: 1} }
+
 
 const canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0];
 const ctx: CanvasRenderingContext2D = canvas.getContext("2d")!;
@@ -36,9 +38,6 @@ const ctx: CanvasRenderingContext2D = canvas.getContext("2d")!;
 document.addEventListener("keydown", hndKeydown);
 
 let sliderManipulate: HTMLInputElement = document.querySelector("input#AngleKeyboard")!;
-
-
-drawCanon();
 
 function hndKeydown(_event: KeyboardEvent): void {
   console.log(_event);
@@ -107,13 +106,23 @@ function drawPlatforms(): void {
 
 drawPlatforms();
 
-function drawCanon(): void {
-  //ctx.arc(canon1.xPos,canon1.yPos,50 , 0, 2 * Math.PI);
-  console.log("draw canon");
+function drawCanon(): void {  
+
+  console.log("draw canon"); 
+  ctx.translate(canon1.xPos+25, canon1.yPos);
+  ctx.beginPath();  
+  ctx.rotate(-((canon1.direction.x - canon1.direction.y)** Math.PI)/180); 
+  ctx.arc(0,0,25 , 0, 2 * Math.PI);  
+  ctx.rect(0, - 12, 50, 25);  
+  ctx.fillStyle = canon1.color;
+ 
+  ctx.fill(); 
+  ctx.resetTransform();
+
   ctx.beginPath();
-  ctx.arc(50 ,50 ,50 , 0, 2 * Math.PI);
-  ctx.rect(50, 50, 70, 50);
-  ctx.fillStyle = "blue";
+  ctx.arc(canon2.xPos,canon2.yPos,25 , 0, 2 * Math.PI);
+  ctx.rect(canon2.xPos, canon2.yPos- 12, 50, 25);
+  ctx.fillStyle = canon2.color;
   ctx.fill();
   
 }
@@ -158,4 +167,9 @@ function animate(): void {
   requestAnimationFrame(animate); // Recursively call the animate function for the next frame
 }
 
+drawCanon();
+
+ctx.beginPath();
+ctx.rect(canon1.xPos, canon1.yPos,5,5);
+ctx.fill();
 
