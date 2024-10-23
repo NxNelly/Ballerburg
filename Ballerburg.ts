@@ -53,18 +53,37 @@ function hndKeydown(_event: KeyboardEvent): void {
 
 }
 
+document.addEventListener("click", hndMousclick);
+
+function hndMousclick(_event: MouseEvent): void{
+  console.log(_event);
+  if (_event.code == "Click") 
+    sliderManipulate = document.querySelector("input#AngleMous")!;
+
+  if(_event.code == "Click")
+    sliderManipulate = document.querySelector("input#GunpowerMous")!;
+
+  sliderManipulate.value =  (parseInt(sliderManipulate.value) + 1) + "";
+
+  console.log(sliderManipulate)
+}
+
 function randomHeightMountain(): number {
   return Math.floor(Math.random() * 500);
 }
 
 function drawMountain(): void {
   ctx.beginPath();
-  ctx.moveTo(0, 200);
+  ctx.moveTo(50, 200);
   ctx.lineTo(150, 0);
-  ctx.lineTo(300, 200);
+  ctx.lineTo(250, 200);
   ctx.lineTo(0, 200);
   ctx.fillStyle = "green";
   ctx.fill();
+}
+
+function drawCanon(): void {
+
 }
 
 function randomHeightCanon(): number {
@@ -91,10 +110,6 @@ function drawBall(_ctx: CanvasRenderingContext2D, _ball: Ball): void {
   _ctx.fillStyle = _ball.color;
   _ctx.fill();
   _ctx.closePath();
-}
-
-function drawCanon(): void {
-
 }
 
 function animate(): void {

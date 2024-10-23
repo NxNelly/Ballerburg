@@ -14,17 +14,29 @@ function hndKeydown(_event) {
     sliderManipulate.value = (parseInt(sliderManipulate.value) + 1) + "";
     console.log(sliderManipulate);
 }
+document.addEventListener("click", hndMousclick);
+function hndMousclick(_event) {
+    console.log(_event);
+    if (_event.code == "Click")
+        sliderManipulate = document.querySelector("input#AngleMous");
+    if (_event.code == "Click")
+        sliderManipulate = document.querySelector("input#GunpowerMous");
+    sliderManipulate.value = (parseInt(sliderManipulate.value) + 1) + "";
+    console.log(sliderManipulate);
+}
 function randomHeightMountain() {
     return Math.floor(Math.random() * 500);
 }
 function drawMountain() {
     ctx.beginPath();
-    ctx.moveTo(0, 200);
+    ctx.moveTo(50, 200);
     ctx.lineTo(150, 0);
-    ctx.lineTo(300, 200);
+    ctx.lineTo(250, 200);
     ctx.lineTo(0, 200);
     ctx.fillStyle = "green";
     ctx.fill();
+}
+function drawCanon() {
 }
 function randomHeightCanon() {
     return Math.floor(Math.random() * 200);
@@ -46,8 +58,6 @@ function drawBall(_ctx, _ball) {
     _ctx.fillStyle = _ball.color;
     _ctx.fill();
     _ctx.closePath();
-}
-function drawCanon() {
 }
 function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
