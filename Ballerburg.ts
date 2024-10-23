@@ -28,8 +28,8 @@ interface Ball {
   active: boolean;
 }
 
-let canon1 : Canon ={ color: "blue", xPos: 50, yPos: 100, power: 50, direction: {x: 1, y: 1} }
-let canon2 : Canon ={ color: "red", xPos: 300, yPos: 100, power: 50, direction: {x: -1, y: 1} }
+let canon1 : Canon ={ color: "blue", xPos: 50, yPos: 100, power: 50, direction: {x: 1, y: 0} }
+let canon2 : Canon ={ color: "red", xPos: 300, yPos: 100, power: 50, direction: {x: -1, y: 0} }
 
 
 const canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0];
@@ -64,6 +64,8 @@ function hndKeydown(_event: KeyboardEvent): void {
   //sliderManipulate.value =  (parseInt(sliderManipulate.value) - 1) + "";
 
   console.log(sliderManipulate);
+
+  console.log(sliderManipulate.value);
 
 }
 
@@ -111,19 +113,21 @@ function drawCanon(): void {
   console.log("draw canon"); 
   ctx.translate(canon1.xPos+25, canon1.yPos);
   ctx.beginPath();  
-  ctx.rotate(-((canon1.direction.x - canon1.direction.y)** Math.PI)/180); 
+  ctx.rotate((-sliderManipulate.value * Math.PI)/180); 
   ctx.arc(0,0,25 , 0, 2 * Math.PI);  
   ctx.rect(0, - 12, 50, 25);  
   ctx.fillStyle = canon1.color;
- 
   ctx.fill(); 
   ctx.resetTransform();
 
+  ctx.translate(canon2.xPos+25, canon2.yPos);
   ctx.beginPath();
-  ctx.arc(canon2.xPos,canon2.yPos,25 , 0, 2 * Math.PI);
-  ctx.rect(canon2.xPos, canon2.yPos- 12, 50, 25);
+  ctx.rotate(((-sliderManipulate.value - 90) * Math.PI)/180); 
+  ctx.arc(0, 0, 25 , 0, 2 * Math.PI);
+  ctx.rect(0, - 12, 50, 25);
   ctx.fillStyle = canon2.color;
   ctx.fill();
+  ctx.resetTransform();
   
 }
 
@@ -169,6 +173,7 @@ function animate(): void {
 
 drawCanon();
 
+ctx.fillStyle= "black";
 ctx.beginPath();
 ctx.rect(canon1.xPos, canon1.yPos,5,5);
 ctx.fill();
