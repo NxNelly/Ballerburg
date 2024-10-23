@@ -31,7 +31,7 @@ interface Ball {
 let canon1 : Canon ={ color: "blue", xPos: 50, yPos: 100, power: 50, direction: {x: 1, y: 0} }
 let canon2 : Canon ={ color: "red", xPos: 300, yPos: 100, power: 50, direction: {x: -1, y: 0} }
 let canonDir1: number = -45;
-let canonDir2: number = 45;
+let canonDir2: number = -45;
 
 
 const canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0];

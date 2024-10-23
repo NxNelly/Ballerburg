@@ -2,7 +2,7 @@
 let canon1 = { color: "blue", xPos: 50, yPos: 100, power: 50, direction: { x: 1, y: 0 } };
 let canon2 = { color: "red", xPos: 300, yPos: 100, power: 50, direction: { x: -1, y: 0 } };
 let canonDir1 = -45;
-let canonDir2 = 45;
+let canonDir2 = -45;
 const canvas = document.getElementsByTagName("canvas")[0];
 const ctx = canvas.getContext("2d");
 document.addEventListener("keydown", hndKeydown);
