@@ -49,6 +49,20 @@ function hndKeydown(_event: KeyboardEvent): void {
 
   sliderManipulate.value =  (parseInt(sliderManipulate.value) + 1) + "";
 
+  if (_event.code == "Arrowright") 
+    sliderManipulate = document.querySelector("input#AngleKeyboard")!;
+
+  if(_event.code == "Arrowleft")
+    sliderManipulate = document.querySelector("input#GunpowerKeyboard")!;
+
+  if (_event.code == "Arrowrleft") 
+    sliderManipulate = document.querySelector("input#AngleKeyboard")!;
+
+  if(_event.code == "Arrowright")
+    sliderManipulate = document.querySelector("input#GunpowerKeyboard")!;
+
+  sliderManipulate.value =  (parseInt(sliderManipulate.value) - 1) + "";
+
   console.log(sliderManipulate);  
 
 }
@@ -80,6 +94,11 @@ function drawMountain(): void {
   ctx.lineTo(0, 200);
   ctx.fillStyle = "green";
   ctx.fill();
+}
+
+function drawPlatforms(): void{
+  ctx.rect(0, 200, 150,  Math.random()* 50);
+  ctx.rect(150, 200, 150,  Math.random()* 50);
 }
 
 function drawCanon(): void {
