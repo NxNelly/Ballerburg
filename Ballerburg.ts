@@ -30,6 +30,8 @@ interface Ball {
 
 let canon1 : Canon ={ color: "blue", xPos: 50, yPos: 100, power: 50, direction: {x: 1, y: 0} }
 let canon2 : Canon ={ color: "red", xPos: 300, yPos: 100, power: 50, direction: {x: -1, y: 0} }
+let canonDir1: number = 45;
+let canonDir2: number = 45;
 
 
 const canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0];
@@ -39,7 +41,7 @@ document.addEventListener("keydown", hndKeydown);
 
 let sliderManipulate: HTMLInputElement = document.querySelector("input#AngleKeyboard")!;
 
-function hndKeydown(_event: KeyboardEvent): void {
+function hndKeydown(_event: KeyboardEvent) : void{
   console.log(_event);
   if (_event.code == "KeyW") {
     sliderManipulate = document.querySelector("input#AngleKeyboard")!;
@@ -54,11 +56,13 @@ function hndKeydown(_event: KeyboardEvent): void {
   if (_event.code == "KeyD") {
     sliderManipulate = document.querySelector("input#GunpowerKeyboard")!;
     sliderManipulate.value =  (parseInt(sliderManipulate.value) + 1) + "";
+    canonDir1 = -sliderManipulate.value;
   }
 
   if (_event.code == "KeyA") {
     sliderManipulate = document.querySelector("input#GunpowerKeyboard")!;
     sliderManipulate.value =  (parseInt(sliderManipulate.value) - 1) + "";
+    canonDir1= -sliderManipulate.value;
   }
 
   //sliderManipulate.value =  (parseInt(sliderManipulate.value) - 1) + "";
@@ -75,6 +79,7 @@ function hndMousclick(_event: MouseEvent): void {
   console.log(_event);
   //if (_event. == "Click") 
   sliderManipulate = document.querySelector("input#AngleMous")!;
+  canonDir2 = -sliderManipulate.value;
 
   //if(_event == "Click")
   sliderManipulate = document.querySelector("input#GunpowerMous")!;
@@ -113,7 +118,7 @@ function drawCanon(): void {
   console.log("draw canon"); 
   ctx.translate(canon1.xPos+25, canon1.yPos);
   ctx.beginPath();  
-  ctx.rotate((-sliderManipulate.value * Math.PI)/180); 
+  ctx.rotate((canonDir1 * Math.PI)/180); 
   ctx.arc(0,0,25 , 0, 2 * Math.PI);  
   ctx.rect(0, - 12, 50, 25);  
   ctx.fillStyle = canon1.color;
@@ -122,7 +127,7 @@ function drawCanon(): void {
 
   ctx.translate(canon2.xPos+25, canon2.yPos);
   ctx.beginPath();
-  ctx.rotate(((-sliderManipulate.value - 90) * Math.PI)/180); 
+  ctx.rotate(((canonDir2 - 90) * Math.PI)/180); 
   ctx.arc(0, 0, 25 , 0, 2 * Math.PI);
   ctx.rect(0, - 12, 50, 25);
   ctx.fillStyle = canon2.color;
@@ -163,18 +168,17 @@ function getInput(): void{
 function animate(): void {
   ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
 
-  getInput()
+  getInput();
+  drawCanon();
+  drawMountain();
   // updateBall(ball);
   //checkBallCollision(ball, canvas.width, canvas.height); 
   // drawBall(ctx, ball);
-
+  console.log(animate);
   requestAnimationFrame(animate); // Recursively call the animate function for the next frame
 }
 
 drawCanon();
+animate();
 
-ctx.fillStyle= "black";
-ctx.beginPath();
-ctx.rect(canon1.xPos, canon1.yPos,5,5);
-ctx.fill();
 
