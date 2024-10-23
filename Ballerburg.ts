@@ -57,7 +57,7 @@ document.addEventListener("click", hndMousclick);
 
 function hndMousclick(_event: MouseEvent): void{
   console.log(_event);
-  if (_event. == "Click") 
+  //if (_event. == "Click") 
     sliderManipulate = document.querySelector("input#AngleMous")!;
 
   //if(_event == "Click")

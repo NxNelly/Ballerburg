@@ -17,8 +17,8 @@ function hndKeydown(_event) {
 document.addEventListener("click", hndMousclick);
 function hndMousclick(_event) {
     console.log(_event);
-    if (_event. == "Click")
-        sliderManipulate = document.querySelector("input#AngleMous");
+    //if (_event. == "Click") 
+    sliderManipulate = document.querySelector("input#AngleMous");
     //if(_event == "Click")
     sliderManipulate = document.querySelector("input#GunpowerMous");
     sliderManipulate.value = (parseInt(sliderManipulate.value) + 1) + "";
