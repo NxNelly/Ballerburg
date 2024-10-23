@@ -4,23 +4,25 @@ const ctx = canvas.getContext("2d");
 canvas.height = innerHeight;
 document.addEventListener("keydown", hndKeydown);
 let sliderManipulate = document.querySelector("input#AngleKeyboard");
-drawMountain();
 function hndKeydown(_event) {
     console.log(_event);
-    if (_event.code == "ArrowUp")
+    if (_event.code == "KeyW") {
         sliderManipulate = document.querySelector("input#AngleKeyboard");
-    if (_event.code == "ArrowDown")
-        sliderManipulate = document.querySelector("input#GunpowerKeyboard");
-    sliderManipulate.value = (parseInt(sliderManipulate.value) + 1) + "";
-    if (_event.code == "Arrowright")
+        sliderManipulate.value = (parseInt(sliderManipulate.value) + 1) + "";
+    }
+    if (_event.code == "KeyS") {
         sliderManipulate = document.querySelector("input#AngleKeyboard");
-    if (_event.code == "Arrowleft")
+        sliderManipulate.value = (parseInt(sliderManipulate.value) - 1) + "";
+    }
+    if (_event.code == "KeyD") {
         sliderManipulate = document.querySelector("input#GunpowerKeyboard");
-    if (_event.code == "Arrowrleft")
-        sliderManipulate = document.querySelector("input#AngleKeyboard");
-    if (_event.code == "Arrowright")
+        sliderManipulate.value = (parseInt(sliderManipulate.value) + 1) + "";
+    }
+    if (_event.code == "KeyA") {
         sliderManipulate = document.querySelector("input#GunpowerKeyboard");
-    sliderManipulate.value = (parseInt(sliderManipulate.value) - 1) + "";
+        sliderManipulate.value = (parseInt(sliderManipulate.value) - 1) + "";
+    }
+    //sliderManipulate.value =  (parseInt(sliderManipulate.value) - 1) + "";
     console.log(sliderManipulate);
 }
 document.addEventListener("click", hndMousclick);
@@ -45,10 +47,13 @@ function drawMountain() {
     ctx.fillStyle = "green";
     ctx.fill();
 }
+drawMountain();
 function drawPlatforms() {
     ctx.rect(0, 200, 150, Math.random() * 50);
     ctx.rect(150, 200, 150, Math.random() * 50);
+    ctx.fillStyle = "green";
 }
+drawPlatforms();
 function drawCanon() {
 }
 function randomHeightCanon() {
@@ -72,8 +77,11 @@ function drawBall(_ctx, _ball) {
     _ctx.fill();
     _ctx.closePath();
 }
+function getInput() {
+}
 function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
+    getInput();
     // updateBall(ball);
     //checkBallCollision(ball, canvas.width, canvas.height); 
     // drawBall(ctx, ball);

@@ -37,47 +37,46 @@ document.addEventListener("keydown", hndKeydown);
 
 let sliderManipulate: HTMLInputElement = document.querySelector("input#AngleKeyboard")!;
 
-drawMountain();
 
 function hndKeydown(_event: KeyboardEvent): void {
   console.log(_event);
-  if (_event.code == "ArrowUp") 
+  if (_event.code == "KeyW") {
     sliderManipulate = document.querySelector("input#AngleKeyboard")!;
+      sliderManipulate.value =  (parseInt(sliderManipulate.value) + 1) + "";
+  }
 
-  if(_event.code == "ArrowDown")
-    sliderManipulate = document.querySelector("input#GunpowerKeyboard")!;
-
-  sliderManipulate.value =  (parseInt(sliderManipulate.value) + 1) + "";
-
-  if (_event.code == "Arrowright") 
+  if (_event.code == "KeyS") {
     sliderManipulate = document.querySelector("input#AngleKeyboard")!;
+    sliderManipulate.value =  (parseInt(sliderManipulate.value) - 1) + "";
+  }
 
-  if(_event.code == "Arrowleft")
+  if (_event.code == "KeyD") {
     sliderManipulate = document.querySelector("input#GunpowerKeyboard")!;
+    sliderManipulate.value =  (parseInt(sliderManipulate.value) + 1) + "";
+  }
 
-  if (_event.code == "Arrowrleft") 
-    sliderManipulate = document.querySelector("input#AngleKeyboard")!;
-
-  if(_event.code == "Arrowright")
+  if (_event.code == "KeyA") {
     sliderManipulate = document.querySelector("input#GunpowerKeyboard")!;
+    sliderManipulate.value =  (parseInt(sliderManipulate.value) - 1) + "";
+  }
 
-  sliderManipulate.value =  (parseInt(sliderManipulate.value) - 1) + "";
+  //sliderManipulate.value =  (parseInt(sliderManipulate.value) - 1) + "";
 
-  console.log(sliderManipulate);  
+  console.log(sliderManipulate);
 
 }
 
 document.addEventListener("click", hndMousclick);
 
-function hndMousclick(_event: MouseEvent): void{
+function hndMousclick(_event: MouseEvent): void {
   console.log(_event);
   //if (_event. == "Click") 
-    sliderManipulate = document.querySelector("input#AngleMous")!;
+  sliderManipulate = document.querySelector("input#AngleMous")!;
 
   //if(_event == "Click")
-    sliderManipulate = document.querySelector("input#GunpowerMous")!;
+  sliderManipulate = document.querySelector("input#GunpowerMous")!;
 
-  sliderManipulate.value =  (parseInt(sliderManipulate.value) + 1) + "";
+  sliderManipulate.value = (parseInt(sliderManipulate.value) + 1) + "";
 
   console.log(sliderManipulate)
 }
@@ -96,10 +95,15 @@ function drawMountain(): void {
   ctx.fill();
 }
 
-function drawPlatforms(): void{
-  ctx.rect(0, 200, 150,  Math.random()* 50);
-  ctx.rect(150, 200, 150,  Math.random()* 50);
+drawMountain();
+
+function drawPlatforms(): void {
+  ctx.rect(0, 200, 150, Math.random() * 50);
+  ctx.rect(150, 200, 150, Math.random() * 50);
+  ctx.fillStyle = "green";
 }
+
+drawPlatforms();
 
 function drawCanon(): void {
 
@@ -131,9 +135,13 @@ function drawBall(_ctx: CanvasRenderingContext2D, _ball: Ball): void {
   _ctx.closePath();
 }
 
+function getInput(): void{
+}
+
 function animate(): void {
   ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
 
+  getInput()
   // updateBall(ball);
   //checkBallCollision(ball, canvas.width, canvas.height); 
   // drawBall(ctx, ball);
