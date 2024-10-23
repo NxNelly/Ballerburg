@@ -1,9 +1,10 @@
 "use strict";
+let canon1 = { color: "blue", xPos: 0, yPos: 50, power: 50, direction: { x: 1, y: 1 } };
 const canvas = document.getElementsByTagName("canvas")[0];
 const ctx = canvas.getContext("2d");
-canvas.height = innerHeight;
 document.addEventListener("keydown", hndKeydown);
 let sliderManipulate = document.querySelector("input#AngleKeyboard");
+drawCanon();
 function hndKeydown(_event) {
     console.log(_event);
     if (_event.code == "KeyW") {
@@ -55,6 +56,13 @@ function drawPlatforms() {
 }
 drawPlatforms();
 function drawCanon() {
+    //ctx.arc(canon1.xPos,canon1.yPos,50 , 0, 2 * Math.PI);
+    console.log("draw canon");
+    ctx.beginPath();
+    ctx.arc(50, 50, 50, 0, 2 * Math.PI);
+    ctx.rect(50, 50, 70, 50);
+    ctx.fillStyle = "blue";
+    ctx.fill();
 }
 function randomHeightCanon() {
     return Math.floor(Math.random() * 200);
