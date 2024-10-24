@@ -28,8 +28,8 @@ interface Ball {
   active: boolean;
 }
 
-let canon1 : Canon ={ color: "blue", xPos: 50, yPos: 100, power: 50, direction: {x: 1, y: 0} }
-let canon2 : Canon ={ color: "red", xPos: 300, yPos: 100, power: 50, direction: {x: -1, y: 0} }
+let canon1: Canon = { color: "blue", xPos: 50, yPos: 100, power: 50, direction: { x: 1, y: 0 } }
+let canon2: Canon = { color: "red", xPos: 300, yPos: 100, power: 50, direction: { x: -1, y: 0 } }
 let canonDir1: number = -45;
 let canonDir2: number = -45;
 
@@ -41,35 +41,35 @@ document.addEventListener("keydown", hndKeydown);
 
 let sliderManipulate: HTMLInputElement = document.querySelector("input#AngleKeyboard")!;
 
-function hndKeydown(_event: KeyboardEvent) : void{
+function hndKeydown(_event: KeyboardEvent): void {
   console.log(_event);
   if (_event.code == "KeyW") {
     sliderManipulate = document.querySelector("input#AngleKeyboard")!;
-      sliderManipulate.value =  (parseInt(sliderManipulate.value) + 1) + "";
+    sliderManipulate.value = (parseInt(sliderManipulate.value) + 1) + "";
   }
 
   if (_event.code == "KeyS") {
     sliderManipulate = document.querySelector("input#AngleKeyboard")!;
-    sliderManipulate.value =  (parseInt(sliderManipulate.value) - 1) + "";
+    sliderManipulate.value = (parseInt(sliderManipulate.value) - 1) + "";
   }
 
   if (_event.code == "KeyD") {
     sliderManipulate = document.querySelector("input#GunpowerKeyboard")!;
-    sliderManipulate.value =  (parseInt(sliderManipulate.value) + 1) + "";
+    sliderManipulate.value = (parseInt(sliderManipulate.value) + 1) + "";
     canonDir1 = -sliderManipulate.value;
   }
 
   if (_event.code == "KeyA") {
     sliderManipulate = document.querySelector("input#GunpowerKeyboard")!;
-    sliderManipulate.value =  (parseInt(sliderManipulate.value) - 1) + "";
-    canonDir1= -sliderManipulate.value;
+    sliderManipulate.value = (parseInt(sliderManipulate.value) - 1) + "";
+    canonDir1 = -sliderManipulate.value;
   }
 
   //sliderManipulate.value =  (parseInt(sliderManipulate.value) - 1) + "";
 
-  console.log(sliderManipulate);
+  //console.log(sliderManipulate);
 
-  console.log(sliderManipulate.value);
+  //console.log(sliderManipulate.value);
 
 }
 
@@ -113,27 +113,27 @@ function drawPlatforms(): void {
 
 drawPlatforms();
 
-function drawCanon(): void {  
+function drawCanon(): void {
 
-  console.log("draw canon"); 
-  ctx.translate(canon1.xPos+25, canon1.yPos);
-  ctx.beginPath();  
-  ctx.rotate((canonDir1 * Math.PI)/180); 
-  ctx.arc(0,0,25 , 0, 2 * Math.PI);  
-  ctx.rect(0, - 12, 50, 25);  
+  console.log("draw canon");
+  ctx.translate(canon1.xPos + 25, canon1.yPos);
+  ctx.beginPath();
+  ctx.rotate((canonDir1 * Math.PI) / 180);
+  ctx.arc(0, 0, 25, 0, 2 * Math.PI);
+  ctx.rect(0, - 12, 50, 25);
   ctx.fillStyle = canon1.color;
-  ctx.fill(); 
+  ctx.fill();
   ctx.resetTransform();
 
-  ctx.translate(canon2.xPos+25, canon2.yPos);
+  ctx.translate(canon2.xPos + 25, canon2.yPos);
   ctx.beginPath();
-  ctx.rotate(((canonDir2 - 90) * Math.PI)/180); 
-  ctx.arc(0, 0, 25 , 0, 2 * Math.PI);
+  ctx.rotate(((canonDir2 - 90) * Math.PI) / 180);
+  ctx.arc(0, 0, 25, 0, 2 * Math.PI);
   ctx.rect(0, - 12, 50, 25);
   ctx.fillStyle = canon2.color;
   ctx.fill();
   ctx.resetTransform();
-  
+
 }
 
 function randomHeightCanon(): number {
@@ -162,7 +162,7 @@ function drawBall(_ctx: CanvasRenderingContext2D, _ball: Ball): void {
   _ctx.closePath();
 }
 
-function getInput(): void{
+function getInput(): void {
 }
 
 function animate(): void {
